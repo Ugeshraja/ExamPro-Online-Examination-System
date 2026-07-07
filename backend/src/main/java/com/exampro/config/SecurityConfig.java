@@ -68,7 +68,8 @@ public class SecurityConfig {
             .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/", "/api/auth/**").permitAll()
+                .requestMatchers("/", "/index.html", "/static/**", "/assets/**", "/favicon.ico", "/*.js", "/*.css", "/*.png", "/*.svg", "/*.ico").permitAll()
+                .requestMatchers("/api/auth/**").permitAll()
                 .anyRequest().authenticated()
             )
             .authenticationProvider(authenticationProvider())

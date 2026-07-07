@@ -121,3 +121,19 @@ The exam-taking console (`TakeExam.jsx`) enforces standard browser security rule
 *   **Input Blocking:** Prevents right-click (`contextmenu`), text highlights (`selectstart`), drag-and-drop, and copy-paste.
 *   **Shortcut Blacklist:** Intercepts key combos (e.g. `Ctrl+C`, `Ctrl+V`, `Ctrl+X`, `Ctrl+A`, `Ctrl+S`, `Ctrl+P`, `F12`, `Ctrl+Shift+I`) and cancels browser defaults.
 *   **Auto-Submit:** Saved answers submit immediately when the timer countdown reaches `00:00`.
+
+---
+
+## Deployment to Render (Single-JAR Deployment)
+
+For cost-effective deployment on Render, you can package both the React frontend and Spring Boot backend together into a single, executable JAR file:
+
+1. **Create a Render Web Service:** Connect your GitHub repository.
+2. **Configure Build Settings:**
+   *   **Environment:** `Docker` or standard native servers. If standard Java environment, set:
+   *   **Build Command:** `chmod +x build.sh && ./build.sh`
+   *   **Start Command:** `java -jar backend/target/backend-0.0.1-SNAPSHOT.jar`
+3. **Configure Environment Variables:** Add variables matching your Render MySQL service (if host details differ from local):
+   *   `SPRING_DATASOURCE_URL` = `jdbc:mysql://<hostname>:<port>/<database_name>`
+   *   `SPRING_DATASOURCE_USERNAME` = `<db_username>`
+   *   `SPRING_DATASOURCE_PASSWORD` = `<db_password>`
