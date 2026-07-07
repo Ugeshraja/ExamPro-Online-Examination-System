@@ -4,6 +4,7 @@ com\exampro\dto\ResultResponse.class
 com\exampro\exception\BadRequestException.class
 com\exampro\config\WebConfig$1.class
 com\exampro\controller\ExamController.class
+com\exampro\config\DatabaseInitializer.class
 com\exampro\dto\AdminDashboardStats.class
 com\exampro\dto\JwtAuthenticationResponse.class
 com\exampro\repository\ExamRepository.class
