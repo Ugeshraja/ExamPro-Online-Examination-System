@@ -1,0 +1,9 @@
+# Ignore local dependencies and build outputs in Docker builds
+**/node_modules
+**/dist
+**/target
+**/.git
+**/.env*
+**/.mvn
+backend/mvnw
+backend/mvnw.cmd
