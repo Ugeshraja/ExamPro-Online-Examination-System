@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
-import { BookOpen, Calendar, Clock, Plus, Edit2, Trash2, HelpCircle, Eye, EyeOff } from 'lucide-react';
+import { BookOpen, Calendar, Clock, Plus, Edit2, Trash2, HelpCircle, Eye, EyeOff, Award } from 'lucide-react';
 
 const ExamManagement = () => {
   const [exams, setExams] = useState([]);
