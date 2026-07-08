@@ -1,11 +1,17 @@
-import axios from 'axios';
+import axios from "axios";
+
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  "https://exampro-online-examination-system.onrender.com/api";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL || 'http://localhost:8080/api',
+  baseURL: API_URL,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
+
+export default api;
 
 // Request Interceptor: Attach JWT Token if available
 api.interceptors.request.use(
