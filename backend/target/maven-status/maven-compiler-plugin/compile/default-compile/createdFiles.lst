@@ -36,6 +36,7 @@ com\exampro\dto\RegisterRequest.class
 com\exampro\config\WebConfig.class
 com\exampro\dto\OptionRequest.class
 com\exampro\repository\QuestionRepository.class
+com\exampro\controller\HealthController.class
 com\exampro\controller\AuthController.class
 com\exampro\repository\UserRepository.class
 com\exampro\security\UserPrincipal.class
