@@ -30,8 +30,17 @@ public class DatabaseInitializer implements CommandLineRunner {
     }
 
     @Override
+    public void run(String... args) {
+        try {
+            seedDatabase();
+        } catch (Exception e) {
+            System.err.println("WARNING: Database auto-seeding failed. Server will continue booting. Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
     @Transactional
-    public void run(String... args) throws Exception {
+    protected void seedDatabase() {
         // 1. Seed Users if database is empty
         if (userRepository.count() == 0) {
             System.out.println("No users found in database. Seeding default credentials...");
