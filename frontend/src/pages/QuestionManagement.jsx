@@ -14,8 +14,8 @@ const QuestionManagement = () => {
   // Form states
   const [editingQuestion, setEditingQuestion] = useState(null);
   const [questionText, setQuestionText] = useState('');
-  const [marks, setMarks] = useState(1.0);
-  const [negativeMarks, setNegativeMarks] = useState(0.0);
+  const [marks, setMarks] = useState('1.0');
+  const [negativeMarks, setNegativeMarks] = useState('0.0');
   const [difficulty, setDifficulty] = useState('EASY');
   const [category, setCategory] = useState('');
   const [options, setOptions] = useState([
@@ -48,8 +48,8 @@ const QuestionManagement = () => {
   const openAddModal = () => {
     setEditingQuestion(null);
     setQuestionText('');
-    setMarks(1.0);
-    setNegativeMarks(0.0);
+    setMarks('1.0');
+    setNegativeMarks('0.0');
     setDifficulty('EASY');
     setCategory('');
     setOptions([
@@ -65,8 +65,8 @@ const QuestionManagement = () => {
   const openEditModal = (question) => {
     setEditingQuestion(question);
     setQuestionText(question.questionText);
-    setMarks(question.marks);
-    setNegativeMarks(question.negativeMarks);
+    setMarks(String(question.marks));
+    setNegativeMarks(String(question.negativeMarks));
     setDifficulty(question.difficulty);
     setCategory(question.category);
     
@@ -110,8 +110,8 @@ const QuestionManagement = () => {
 
     const payload = {
       questionText,
-      marks,
-      negativeMarks,
+      marks: parseFloat(marks) || 0.0,
+      negativeMarks: parseFloat(negativeMarks) || 0.0,
       difficulty,
       category,
       options
@@ -278,11 +278,11 @@ const QuestionManagement = () => {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                 <div className="form-group">
                   <label className="form-label">Marks Awarded</label>
-                  <input type="number" step="0.5" className="form-control" value={marks} onChange={(e) => setMarks(parseFloat(e.target.value))} required />
+                  <input type="number" step="0.5" className="form-control" value={marks} onChange={(e) => setMarks(e.target.value)} required />
                 </div>
                 <div className="form-group">
                   <label className="form-label">Negative Penalty Marks</label>
-                  <input type="number" step="0.5" className="form-control" value={negativeMarks} onChange={(e) => setNegativeMarks(parseFloat(e.target.value))} required />
+                  <input type="number" step="0.5" className="form-control" value={negativeMarks} onChange={(e) => setNegativeMarks(e.target.value)} required />
                 </div>
               </div>
 

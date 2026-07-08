@@ -13,9 +13,9 @@ const ExamManagement = () => {
   const [editingExam, setEditingExam] = useState(null);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [durationMinutes, setDurationMinutes] = useState(30);
-  const [passingMarks, setPassingMarks] = useState(50.0);
-  const [totalQuestions, setTotalQuestions] = useState(10);
+  const [durationMinutes, setDurationMinutes] = useState('30');
+  const [passingMarks, setPassingMarks] = useState('50.0');
+  const [totalQuestions, setTotalQuestions] = useState('10');
   const [scheduleTime, setScheduleTime] = useState('');
   const [isPublished, setIsPublished] = useState(false);
   const [error, setError] = useState('');
@@ -39,9 +39,9 @@ const ExamManagement = () => {
     setEditingExam(null);
     setTitle('');
     setDescription('');
-    setDurationMinutes(30);
-    setPassingMarks(50.0);
-    setTotalQuestions(10);
+    setDurationMinutes('30');
+    setPassingMarks('50.0');
+    setTotalQuestions('10');
     setScheduleTime('');
     setIsPublished(false);
     setError('');
@@ -52,9 +52,9 @@ const ExamManagement = () => {
     setEditingExam(exam);
     setTitle(exam.title);
     setDescription(exam.description || '');
-    setDurationMinutes(exam.durationMinutes);
-    setPassingMarks(exam.passingMarks);
-    setTotalQuestions(exam.totalQuestions);
+    setDurationMinutes(String(exam.durationMinutes));
+    setPassingMarks(String(exam.passingMarks));
+    setTotalQuestions(String(exam.totalQuestions));
     setScheduleTime(exam.scheduleTime ? exam.scheduleTime.substring(0, 16) : '');
     setIsPublished(exam.isPublished);
     setError('');
@@ -68,9 +68,9 @@ const ExamManagement = () => {
     const payload = {
       title,
       description,
-      durationMinutes,
-      passingMarks,
-      totalQuestions,
+      durationMinutes: parseInt(durationMinutes) || 0,
+      passingMarks: parseFloat(passingMarks) || 0.0,
+      totalQuestions: parseInt(totalQuestions) || 0,
       scheduleTime: scheduleTime ? new Date(scheduleTime).toISOString() : null,
       isPublished
     };
@@ -252,18 +252,18 @@ const ExamManagement = () => {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                 <div className="form-group">
                   <label className="form-label">Duration (Minutes)</label>
-                  <input type="number" className="form-control" value={durationMinutes} onChange={(e) => setDurationMinutes(parseInt(e.target.value))} required />
+                  <input type="number" className="form-control" value={durationMinutes} onChange={(e) => setDurationMinutes(e.target.value)} required />
                 </div>
                 <div className="form-group">
                   <label className="form-label">Passing Marks (%)</label>
-                  <input type="number" step="0.1" className="form-control" value={passingMarks} onChange={(e) => setPassingMarks(parseFloat(e.target.value))} required />
+                  <input type="number" step="0.1" className="form-control" value={passingMarks} onChange={(e) => setPassingMarks(e.target.value)} required />
                 </div>
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                 <div className="form-group">
                   <label className="form-label">Questions Count</label>
-                  <input type="number" className="form-control" value={totalQuestions} onChange={(e) => setTotalQuestions(parseInt(e.target.value))} required />
+                  <input type="number" className="form-control" value={totalQuestions} onChange={(e) => setTotalQuestions(e.target.value)} required />
                 </div>
                 <div className="form-group">
                   <label className="form-label">Schedule Time (Optional)</label>
