@@ -81,8 +81,8 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        // Allow the React dev server port (normally 3000, 5173 for Vite, etc.)
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000", "http://localhost:5173","https://exam-pro-online-examination-system-xi.vercel.app/"));
+        // Allow Vercel and local dev origins
+        configuration.setAllowedOriginPatterns(Collections.singletonList("*"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "Cache-Control"));
         configuration.setExposedHeaders(Collections.singletonList("Authorization"));
