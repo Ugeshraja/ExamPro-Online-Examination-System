@@ -3,6 +3,7 @@ package com.exampro.entity;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -15,6 +16,7 @@ public class Question {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "exam_id", nullable = false)
+    @JsonIgnore
     private Exam exam;
 
     @Column(name = "question_text", nullable = false, columnDefinition = "TEXT")
