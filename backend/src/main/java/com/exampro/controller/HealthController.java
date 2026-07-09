@@ -59,4 +59,9 @@ public class HealthController {
             return ResponseEntity.status(500).body(response);
         }
     }
+
+    @GetMapping("/error-logs")
+    public ResponseEntity<java.util.List<Map<String, Object>>> getErrorLogs() {
+        return ResponseEntity.ok(com.exampro.exception.GlobalExceptionHandler.ERROR_LOGS);
+    }
 }
