@@ -27,7 +27,7 @@ public class Leaderboard {
     @Column(nullable = false)
     private Double percentage;
 
-    @Column(name = "rank", nullable = false)
+    @Column(name = "`rank`", nullable = false)
     private Integer rank;
 
     @Column(name = "updated_at")
